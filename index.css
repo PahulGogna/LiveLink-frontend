@@ -1,0 +1,145 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.847);
+  background-color: #242424;
+  
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
+.displayUrl{
+  margin: 10px;
+  flex: 1;
+}
+
+.displayLink{
+  display: inline-flex;
+  padding: 10px;
+  margin: 7px;
+  background-color: #121212;
+  align-items: center;
+  width: fit-content;
+  border-radius: 7px;
+  transition: 200ms;
+  cursor: pointer;
+}
+
+.displayLink:hover{
+  background-color: #151515;
+}
+
+
+.shape-circle{
+  height: 1.1vh;
+  width: 1.1vh;
+  left: 90%;
+  margin-top: .4vh;
+  border-radius: 50%;
+  border: 1px solid #121212;
+  shape-outside: circle();
+}
+.displayLink:hover .shape-circle{
+  border: 1px #151515 solid;
+}
+
+.shape-circle .shape-circle-text{
+  transition: 200ms;
+  visibility: hidden;
+  width: fit-content;
+  background-color: rgba(4, 4, 4, 0.363);
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  margin-top: -35px;
+  margin-left: .5vw; /* Use half of the width (120/2 = 60), to center the tooltip */
+}
+.shape-circle:hover .shape-circle-text{
+  visibility: visible;
+}
+#red{
+  background-color: red;
+}
+#green{
+  background-color: rgb(61, 251, 61);
+}
+#grey{
+  background-color: hsl(0, 3%, 38%);
+}
+
+
+li, a, button{
+  color: rgba(255, 255, 255, 0.847);
+}
+a{
+  cursor: pointer;
+}
+
+button{
+  background-color: hsla(120, 67%, 64%, 0.887);
+  border-radius: 5px;
+  border: 2px solid #242424;
+  padding: 10px;
+  cursor: pointer;
+  transition: 200ms;
+  margin: 4px;
+}
+
+#logout {
+  background-color: rgb(242, 112, 112);
+}
+#logout:hover{
+  background-color: rgb(255, 131, 131);
+  border: 2px solid rgb(255, 131, 131);
+}
+
+button:hover{
+  background-color: hsl(120, 67%, 64%);
+  border: 2px solid hsl(120, 67%, 64%);
+}
+
+header{
+  position: fixed;
+  display: flex;
+  justify-content: space-between;
+  top: 0px;
+  right: 0px;
+  left: 0px;
+  margin-top: 0px;
+  padding: 0px 5%;
+  background-color: #121212;
+  align-items: center;
+  height: 10vh;
+}
+
+header nav ul{
+  list-style: none;
+}
+
+header nav li{
+  display: inline;
+  padding: 2vw 2vw;
+}
+
+header a:hover{
+  color: rgb(255, 255, 255);
+}
+
+.pageBody{
+  margin: 10vh;
+}
+
+
+h1{
+  text-align: center;
+  color: #e4e4e4;
+}
