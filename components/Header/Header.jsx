@@ -1,14 +1,22 @@
-import { Link } from "react-router-dom"
-
+import { Link, NavLink, useNavigate} from "react-router-dom"
+import { useContext, useEffect, useState } from "react"
+import { LoginContext } from "../../Contexts/LoginContext"
 
 function Header(){
+
+    const {user} = useContext(LoginContext)
+
+    const navigate = useNavigate()
+
     function handleLogout(){
         let confirmation = confirm('Do you want to logout?')
         if(confirmation){
           if(window.localStorage.getItem('user') !== 'false'){
             window.localStorage.setItem('user', false)
             window.localStorage.removeItem('links')
-            setUser(false)
+            window.localStorage.removeItem('userDetails')
+            navigate('../')
+            window.location.reload()
           }
         }
       }
@@ -17,16 +25,25 @@ function Header(){
             <>
                 <header>
                     <img src="../assets/logo.svg" alt="Logo" />
-                    {user ? <>
+                    {user?<>
                         <nav>
                             <ul className="side-panel">
-                                <li><Link to="#">Your Monitors</Link></li>
-                                <li><Link to="#">Create Monitor</Link></li>
+                                <li><NavLink to="home" className={({isActive}) => `${isActive ? "a-active":"a"}`}>
+                                    Your Monitors</NavLink></li>
+                                <li><NavLink to="create" className={({isActive}) => `${isActive ? "a-active":"a"}`}>
+                                    Create Monitor</NavLink></li>
                             </ul>
                         </nav>
-                        <button>Your Account</button>
+                        
+                        <div>
+                        <Link to='user'>
+                            <button>Your Account</button>
+                        </Link>
                         <button id='logout' onClick={()=> handleLogout()}>Log Out</button>
-                    </>: ""}
+                        </div>
+                    </>:''}
+
+                    
                 </header>
             </>
         )

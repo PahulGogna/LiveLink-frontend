@@ -1,9 +1,13 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import "./Login.css"
+import { Link, useNavigate } from "react-router-dom";
+import { LoginContext } from "../../Contexts/LoginContext";
 
 function Login (props){
 
-    const [user, setUser] = useState(false);
+    const {user, setUser} = useContext(LoginContext)
+    const navigate = useNavigate()
+    console.log(user)
     
     function handleLogin(props){
         let formData = new FormData
@@ -11,7 +15,7 @@ function Login (props){
         formData.append('username',document.getElementById('login__Email').value)
         formData.append('password',document.getElementById('login__password').value)
         
-        let getServerData = () => fetch('http://127.0.0.1:8000' + '/users/login',{
+        let getServerData = () => fetch(import.meta.env.VITE_BEEP + '/users/login',{
                     method: "post",
                     body:formData
                 })
@@ -20,18 +24,20 @@ function Login (props){
                     if(data.Token){
                         window.localStorage.setItem('user', JSON.stringify(data))
                         setUser(data)
-                        props.onSubmit(true)
-                        window.location.reload()
+                        navigate("../home")
+                    }
+                    else{
+                        console.log('Invalid credentials')
+                        alert('Invalid Credentials')
                     }
                 })
         
                 try{
                     getServerData().then(()=>{
                         if (user.Token){
-                            props.onSubmit(true)
                         }
                         else{
-                            props.onSubmit(false)
+                            return false
                         }
                     })
                 }
@@ -41,16 +47,28 @@ function Login (props){
     }
 
     return (
-        <div className="grid">
-            <form method="POST" className="form login" onSubmit={(e)=>{e.preventDefault()
-                console.log('submitted')
-                handleLogin(props)
-            }}>
-                <input autoComplete="Email" id="login__Email" type="text" name="Email" className="form__input" placeholder="Email" required />
-                <input id="login__password" type="password" name="password" className="form__input" placeholder="Password" required/>
-                <input type="submit" value="Sign In" onSubmit={() => {}}/>
-            </form>
-        </div>
+        <>
+            {user? 
+            <>
+            <h1>You are already logged in, <Link to='/home' style={{color:'rgb(61, 251, 61)'}}>Back To Home</Link></h1>
+            
+            </>
+            :<div className="grid">
+                <h1>Welcome Back!</h1>
+                <form method="POST" className="form login" onSubmit={(e)=>{e.preventDefault()
+                    handleLogin(props)
+                }}>
+                    <input autoComplete="Email" id="login__Email" type="text" name="Email" className="form__input" placeholder="Email" required />
+                    <input id="login__password" type="password" name="password" className="form__input" placeholder="Password" required/>
+                    <input type="submit" value="Sign In"/>
+                </form>
+                <p className="text--center">Don't have an account? {' '}
+                    <Link to='/signup'>
+                        SIGN UP
+                    </Link>
+            </p>
+            </div>}
+        </>
     )
 }
 

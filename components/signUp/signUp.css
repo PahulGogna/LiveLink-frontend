@@ -105,6 +105,14 @@
     --formGap: 0.875rem;
   }
   
+  #OTP_IN{
+    margin: 2vh;
+    width: 7vh;
+    padding: 2vh;
+    background-color: rgb(204, 189, 189);
+    border-radius: 4px;
+  }
+
   input {
     background-image: none;
     border: 0;
@@ -209,3 +217,15 @@
   .text--center {
     text-align: center;
   }
+
+  .OTP_Cont{
+    background-color: #121212;
+    width: fit-content;
+    padding: 5vw;
+    border-radius: 7px;
+    margin: auto;
+  }
+
+.OTP_Cont h3{
+  color: rgb(233, 233, 233);
+}

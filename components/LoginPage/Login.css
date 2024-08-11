@@ -16,6 +16,12 @@
     max-inline-size: 20rem;
     margin-bottom: 0px;
   }
+
+  .grid{
+    background-color: #151515;
+    padding: 5vh 2vh;
+    border-radius: 10px;
+  }
   
   /* helpers/hidden.css */
   

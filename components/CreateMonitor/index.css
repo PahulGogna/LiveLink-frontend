@@ -1,0 +1,19 @@
+table tr td{
+    text-align: center;
+}
+
+#InputUrl{
+    border-radius: 5px;
+    width: 100%;
+    padding: 5px;
+    color: rgb(233, 224, 224);
+}
+
+h4{
+    margin: 1px;
+}
+
+
+table{
+    width: 40%;
+}

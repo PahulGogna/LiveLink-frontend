@@ -1,0 +1,75 @@
+h1{
+    color: #e4e4e4;
+    text-align: left;
+    margin-left: 2vw;
+}
+
+h2{
+    color: #e4e4e4;
+    text-align: center;
+}
+h3{
+    text-align: center;
+}
+
+.linkDataTable td{
+    padding: 1.5vh;
+    margin: 0px;
+    border-spacing: 0px;
+}
+
+.linkDataTable h3{
+    color: rgb(190, 190, 190);
+}
+
+.linkDataTable{
+    background-color: #1a191982;
+    color: rgb(190, 190, 190);
+    text-align: center;
+    border: 3px solid whitesmoke;
+    padding: 0;
+    border-radius: 10px;
+}
+
+.linkDataTableContainer{
+    text-align: center;
+    align-items: center;
+    align-content: center;
+    border: 2px solid white;
+}
+
+.AccountButtons{
+    display: inline-flex;
+}
+
+#heading{
+    color: rgb(242, 112, 112);
+    text-align: left;
+    align-content: center;
+    margin-top: 4vh;
+    margin-bottom: 0px;
+    margin-left: 2vw;
+}
+
+.account-button{
+    margin: 30px;
+    border: 1px solid #212121;
+    flex: 1;
+    transition: 200ms;
+}
+
+#delete{
+    background-color: rgb(242, 112, 112);
+}
+#delete:hover{
+    background-color: rgb(250, 127, 127);
+    border: 1px solid rgb(250, 127, 127);
+}
+
+#reset-pass{
+    background-color: rgb(165, 165, 165);
+}
+#reset-pass:hover{
+    background-color: rgb(180, 180, 180);
+    border: 1px solid rgb(180, 180, 180);
+}
