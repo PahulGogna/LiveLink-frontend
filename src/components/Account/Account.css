@@ -73,3 +73,15 @@ h3{
     background-color: rgb(180, 180, 180);
     border: 1px solid rgb(180, 180, 180);
 }
+
+#new-pass{
+    padding: 1vh;
+    margin: 2vh;
+    margin-right: 0px;
+}
+
+#confirm-pass{
+    padding: 1vh;
+    margin: 2vh;
+    margin-right: 0px;
+}

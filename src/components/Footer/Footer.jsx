@@ -5,7 +5,7 @@ function Footer() {
   return (
     <footer>
         <div className='footer'>
-            Made with ♥ by <a href="https://github.com/PahulGogna" target="_blank">@PahulGogna</a>
+            Made by <a href="https://github.com/PahulGogna" target="_blank">@PahulGogna</a>
         </div>
     </footer>
   )

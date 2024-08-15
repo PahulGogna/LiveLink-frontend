@@ -6,7 +6,6 @@ import useVerificationHook from 'react-code-hook'
 
 
 function SignUp(){
-    const {user, setUser} = useContext(LoginContext)
     const navigate = useNavigate()
     const [newUser, setNewUser] = useState(null)
     const [verifying, setVerifying] = useState(false)
@@ -37,6 +36,18 @@ function SignUp(){
     }
     
     function handleEmailVerification(){
+        let pass = document.getElementById('signUp__password').value
+        let confPass = document.getElementById('confirm__password').value
+
+        if(pass.length < 8){
+            alert('The Password should be atleast 8 characters')
+            return
+        }
+        if(pass !== confPass){
+            alert('passwords do not match')
+            return
+        }
+
         let email = document.getElementById('signUp__Email').value
         let checkEmail = () => fetch(import.meta.env.VITE_BEEP + '/users/emailcheck',{
                     method: "post",
@@ -44,17 +55,28 @@ function SignUp(){
                         'Content-Type': 'application/json',
                     },
                     body: JSON.stringify({'email': email})
-                }).then(response => response.json())
+                }).then(response => 
+                    {
+                        if(response.status === 200){
+                            return response.json()
+                        }
+                        else{
+                            response.json().then(data => {
+                                alert(data.detail.detail)
+                                throw console.error(data.detail.detail)
+                            })
+                        }
+                    })
                 .then(data => {
+
                     setServerCode(data.code)
                     setNewUser({'email': email,
                                 'name': document.getElementById('signUp__Username').value,
-                                'password': document.getElementById('signUp__password').value})
+                                'password': pass})
                     setVerifying(true)
                 })
 
         checkEmail()
-        
     }
 
     return (
@@ -70,8 +92,8 @@ function SignUp(){
                         <input autoComplete="Username" id="signUp__Email" type="text" name="Email" className="form__input" placeholder="Email" required />
 
                         <input id="signUp__password" type="password" name="password" className="form__input" placeholder="Password" required/>
-                            <input type="submit" value="Sign Up"/>
-
+                        <input id="confirm__password" type="password" name="password" className="form__input" placeholder="Confirm Password" required/>
+                        <input type="submit" value="Sign Up"/>
                 </form>
                 <p className="text--center">Already have an account? {' '}
                     <Link to='/login'>

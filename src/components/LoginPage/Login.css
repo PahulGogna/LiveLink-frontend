@@ -4,6 +4,10 @@
   }
   
   /* helpers/align.css */
+
+  a{
+   cursor: pointer;
+  }
   
   .align {
     display: grid;
