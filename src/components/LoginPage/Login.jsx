@@ -9,6 +9,7 @@ function Login (props){
     const navigate = useNavigate()
     const [forgotPass, setForgotPass] = useState(false)
     const [buttonClicked, setButtonClicked] = useState(false)
+    const [visibility, setVisibility] = useState('password')
     
     function handleLogin(){
 
@@ -86,6 +87,10 @@ function Login (props){
         }
     }
 
+    function func(){
+        setVisibility(visibility === 'password'?'text':'password')
+    }
+
     return (
         <>
             {user? 
@@ -99,7 +104,23 @@ function Login (props){
                     handleLogin()
                 }}>
                     <input autoComplete="Email" id="login__Email" type="text" name="Email" className="form__input" placeholder="Email" required />
-                    {forgotPass ? '': <input id="login__password" type="password" name="password" className="form__input" placeholder="Password" required/>}
+                    {forgotPass ? '': <input id="login__password" type={visibility} name="password" className="form__input" placeholder="Password" required/>}
+                    <div style={{
+                        display:'inline-flex',
+                        alignContent:'end'
+                    }}>
+                    {!(visibility==='password')?'Hide':'Show'} password
+                    <img src={!(visibility==='password')?'https://cdn-icons-png.flaticon.com/512/8395/8395688.png':'https://cdn-icons-png.flaticon.com/512/6423/6423885.png'} onClick={func} 
+                        style={{
+                                width:'7%',
+                                cursor:"pointer",  
+                                marginRight:'5px',
+                                marginLeft:'7px', 
+                                flex:.13                    
+                            }}
+                    />
+                    </div>
+                    <a href="https://www.flaticon.com/free-icons/password" title="password icons"></a>
                     <input type="submit" value={buttonClicked? 'loading':forgotPass? "RESET":"Sign In"} disabled={buttonClicked}/>
                 </form>
                 <p className="text--center">{forgotPass? 'Your current password will be reset. ':'Forgot Password?'} <a onClick={()=> setForgotPass(!forgotPass)}>{forgotPass? 'CANCEL':'Reset Password'}</a></p>

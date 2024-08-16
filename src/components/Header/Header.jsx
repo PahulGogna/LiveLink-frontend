@@ -24,7 +24,30 @@ function Header(){
     return (
             <>
                 <header>
-                    <img src="../assets/logo.svg" alt="Logo" />
+                    <div 
+                    style={{
+                        display:'inline-flex',
+                        height:'100%',
+                        alignContent:'center',
+                        textAlign:'center',
+                        alignItems: 'center',
+                    }}>
+                    <h2
+                        style={{
+                            color:'#e0e0d7'
+                        }}
+                    >
+                        Monitor Lizard
+                    </h2>
+                    <img src="src\assets\logo-removebg-preview.png" alt="Logo" 
+                        style={{
+                            marginLeft:'5px',
+                            height:'60%',
+                        }}
+                    />
+                    
+                    </div>
+                    
                     {user?<>
                         <nav>
                             <ul className="side-panel">

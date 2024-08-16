@@ -11,7 +11,13 @@ function SignUp(){
     const [verifying, setVerifying] = useState(false)
     const [serverCode, setServerCode] = useState(null)
     const { code, inputStates, inputClass, handleChange, handleKeyDown } = useVerificationHook(5);
+    const [visibility, setVisibility] = useState('password')
+
     let tries = 0
+
+    function func(){
+        setVisibility(visibility === 'password'?'text':'password')
+    }
 
     function handleSignUp(){
         let send = async () => await fetch(import.meta.env.VITE_BEEP + '/users/create',
@@ -91,8 +97,24 @@ function SignUp(){
 
                         <input autoComplete="Username" id="signUp__Email" type="text" name="Email" className="form__input" placeholder="Email" required />
 
-                        <input id="signUp__password" type="password" name="password" className="form__input" placeholder="Password" required/>
-                        <input id="confirm__password" type="password" name="password" className="form__input" placeholder="Confirm Password" required/>
+                        <input id="signUp__password" type={visibility} name="password" className="form__input" placeholder="Password" required/>
+
+                        <input id="confirm__password" type={visibility} name="password" className="form__input" placeholder="Confirm Password" required/>
+                        <div style={{
+                        display:'inline-flex',
+                        alignContent:'end'
+                    }}>
+                    {!(visibility==='password')?'Hide':'Show'} password
+                    <img src={!(visibility==='password')?'https://cdn-icons-png.flaticon.com/512/8395/8395688.png':'https://cdn-icons-png.flaticon.com/512/6423/6423885.png'} onClick={func} 
+                        style={{
+                                width:'7%',
+                                cursor:"pointer",  
+                                marginRight:'5px',
+                                marginLeft:'7px', 
+                                flex:.13                    
+                            }}
+                    />
+                    </div>
                         <input type="submit" value="Sign Up"/>
                 </form>
                 <p className="text--center">Already have an account? {' '}
