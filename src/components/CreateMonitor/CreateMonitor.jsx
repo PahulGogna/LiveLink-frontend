@@ -1,11 +1,14 @@
 import React, { useContext } from 'react'
 import './index.css'
-import { json, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { LinksContext } from '../../Contexts/LinksContext'
+import { LoginContext } from '../../Contexts/LoginContext'
+import { Link } from 'react-router-dom'
 
 function CreateMonitor() {
     const navigate = useNavigate()
     const {setLinks} = useContext(LinksContext)
+    const {user} = useContext(LoginContext)
 
     function handleAdd(){
         let url = document.getElementById('InputUrl').value
@@ -60,18 +63,18 @@ function CreateMonitor() {
 
 return (
     <>
-        <table cellSpacing={13} align='center'>
+        {user?<table cellSpacing={13} align='center'>
             <tbody>
                 <tr>
                     <td colSpan={2}><input type="text" name="" id="InputUrl" placeholder='Enter URL'/></td>
                 </tr>
                 <tr>
                     <td colSpan={2}>
-                        <button style={{width:'10vw'}} onClick={() => handleAdd()}>Create Alert</button>
+                        <button style={{width:'10vw'}} onClick={() => handleAdd()}>Create</button>
                     </td>
                 </tr>
             </tbody>
-        </table>
+        </table>:<h1>You are not logged in, <Link to='/login' style={{color:'rgb(61, 251, 61)'}}>Login</Link></h1>}
     </>      
   )
 }

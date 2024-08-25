@@ -111,7 +111,9 @@ function SignUp(){
                                 cursor:"pointer",  
                                 marginRight:'5px',
                                 marginLeft:'7px', 
-                                flex:.13                    
+                                flex:.13,
+                                filter:'invert(25%)'
+                                          
                             }}
                     />
                     </div>

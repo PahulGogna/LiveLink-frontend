@@ -1,7 +1,7 @@
 import { useContext } from "react"
 import { LinksContext } from "../../Contexts/LinksContext"
 
-function Link(props){
+function DisplayLink(props){
 
     const {links, setLinks} = useContext(LinksContext)
 
@@ -47,4 +47,4 @@ function Link(props){
     )
 }
 
-export default Link
+export default DisplayLink

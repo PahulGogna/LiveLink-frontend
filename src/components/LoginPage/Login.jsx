@@ -18,7 +18,7 @@ function Login (props){
         let resetFunc = () => {
             let data = {'email':document.getElementById('login__Email').value}
 
-            if(data){
+            if(data.email){
                 fetch(import.meta.env.VITE_BEEP + '/users/login/otp',{
                                         method: "post",
                                         headers: {
@@ -32,7 +32,7 @@ function Login (props){
                                                 setForgotPass(false)
                                             }
                                             else{
-                                                alert(response.error)
+                                                alert(response.detail.detail)
                                             }
                                             setButtonClicked(false)
                                         }
@@ -105,7 +105,7 @@ function Login (props){
                 }}>
                     <input autoComplete="Email" id="login__Email" type="text" name="Email" className="form__input" placeholder="Email" required />
                     {forgotPass ? '': <input id="login__password" type={visibility} name="password" className="form__input" placeholder="Password" required/>}
-                    <div style={{
+                    {forgotPass ? '':<div style={{
                         display:'inline-flex',
                         alignContent:'end'
                     }}>
@@ -116,10 +116,11 @@ function Login (props){
                                 cursor:"pointer",  
                                 marginRight:'5px',
                                 marginLeft:'7px', 
-                                flex:.13                    
+                                flex:.13,
+                                filter:'invert(25%)'               
                             }}
                     />
-                    </div>
+                    </div>}
                     <a href="https://www.flaticon.com/free-icons/password" title="password icons"></a>
                     <input type="submit" value={buttonClicked? 'loading':forgotPass? "RESET":"Sign In"} disabled={buttonClicked}/>
                 </form>

@@ -4,7 +4,7 @@ import { LoginContext } from "../../Contexts/LoginContext"
 
 function Header(){
 
-    const {user} = useContext(LoginContext)
+    const {user, setUser} = useContext(LoginContext)
 
     const navigate = useNavigate()
 
@@ -15,6 +15,7 @@ function Header(){
             window.localStorage.setItem('user', false)
             window.localStorage.removeItem('links')
             window.localStorage.removeItem('userDetails')
+            setUser(null)
             navigate('../')
             window.location.reload()
           }
@@ -23,7 +24,10 @@ function Header(){
 
     return (
             <>
-                <header>
+                <header style={{
+                    minWidth:'fit-content',
+                    height:'65px'
+                }}>
                     <div 
                     style={{
                         display:'inline-flex',
@@ -31,6 +35,7 @@ function Header(){
                         alignContent:'center',
                         textAlign:'center',
                         alignItems: 'center',
+                        width:'fit-content',
                     }}>
                     <h2
                         style={{
