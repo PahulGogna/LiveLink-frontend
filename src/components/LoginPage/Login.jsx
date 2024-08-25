@@ -10,6 +10,11 @@ function Login (props){
     const [forgotPass, setForgotPass] = useState(false)
     const [buttonClicked, setButtonClicked] = useState(false)
     const [visibility, setVisibility] = useState('password')
+
+    if(!window.localStorage.getItem('user')){
+        setUser(false)
+        window.localStorage.setItem('user', false)
+    }
     
     function handleLogin(){
 
