@@ -44,7 +44,7 @@ function Header(){
                     >
                         Monitor Lizard
                     </h2>
-                    <img src="src\assets\logo-removebg-preview.png" alt="Logo" 
+                    <img src="https://raw.githubusercontent.com/pahulgogna/LiveLink-frontend/master/src/assets/logo-removebg-preview.png" alt="Logo" 
                         style={{
                             marginLeft:'5px',
                             height:'60%',
