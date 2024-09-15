@@ -2,11 +2,11 @@
     "rewrites": [
         {"source": "/(.*)", "destination": "/"}
     ],
-    
+
     "redirects": [
       {
-        "source": "/users/delete/(.*)",
-        "destination": "https://agdfgdfgghfgsh-ddaxbrf7b2bbarar.eastus-01.azurewebsites.net/users/delete/$1",
+        "source": "http://agdfgdfgghfgsh-ddaxbrf7b2bbarar.eastus-01.azurewebsites.net/(.*)",
+        "destination": "https://agdfgdfgghfgsh-ddaxbrf7b2bbarar.eastus-01.azurewebsites.net/$1",
         "permanent": true
       }
     ]
