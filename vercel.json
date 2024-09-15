@@ -1,5 +1,14 @@
 {
-    "rewrites": [
-        {"source": "/(.*)", "destination": "/"}
+    "redirects": [
+      {
+        "source": "/(.*)",
+        "destination": "https://monitorlizard.vercel.app/$1",
+        "permanent": true
+      },
+      {
+        "source": "/users/delete/(.*)",
+        "destination": "https://agdfgdfgghfgsh-ddaxbrf7b2bbarar.eastus-01.azurewebsites.net/users/delete/$1",
+        "permanent": true
+      }
     ]
-}
+  }
