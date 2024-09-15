@@ -40,7 +40,7 @@ function Account() {
       if(input === userDetails.name){
         let delete_user = async () => {
           await fetch(import.meta.env.VITE_BEEP + `/users/delete`,{
-              method: 'delete',
+              method: 'DELETE',
               headers:{
                   Authorization: `Bearer ${token}`}
           })
