@@ -24,7 +24,7 @@ function Login (props){
             let data = {'email':document.getElementById('login__Email').value}
 
             if(data.email){
-                fetch(import.meta.env.VITE_BEEP + '/users/login/otp',{
+                fetch(import.meta.env.VITE_BEEP + '/password/mail',{
                                         method: "post",
                                         headers: {
                                             'Content-Type': 'application/json',
@@ -129,7 +129,7 @@ function Login (props){
                     <a href="https://www.flaticon.com/free-icons/password" title="password icons"></a>
                     <input type="submit" value={buttonClicked? 'loading':forgotPass? "RESET":"Sign In"} disabled={buttonClicked}/>
                 </form>
-                <p className="text--center">{forgotPass? 'Your current password will be reset. ':'Forgot Password?'} <a onClick={()=> setForgotPass(!forgotPass)}>{forgotPass? 'CANCEL':'Reset Password'}</a></p>
+                <p className="text--center">{forgotPass? 'Get a password reset mail':'Forgot Password?'} <a onClick={()=> setForgotPass(!forgotPass)}>{forgotPass? 'CANCEL':'Reset Password'}</a></p>
                 <p className="text--center">Don't have an account? {' '}
                     <Link to='/signup'>
                         SIGN UP

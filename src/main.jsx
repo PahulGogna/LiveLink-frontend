@@ -8,6 +8,7 @@ import Login from './components/LoginPage/Login.jsx'
 import SignUp from './components/signUp/SignUp.jsx'
 import Account from './components/Account/Account.jsx'
 import CreateMonitor from './components/CreateMonitor/CreateMonitor.jsx'
+import Recover from './components/recover/Recover.jsx'
 
 
 const router = createBrowserRouter([
@@ -35,10 +36,15 @@ const router = createBrowserRouter([
         path:'user',
         element:<Account/>
       },
-    {
-      path:'create',
-      element:<CreateMonitor/>
-    }
+      {
+        path:'create',
+        element:<CreateMonitor/>
+      },
+      {
+        path:"recover",
+        element: <Recover/>
+      }
+
     ]
   }
 ])
