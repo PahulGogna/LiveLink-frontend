@@ -17,6 +17,11 @@ function Recover() {
             alert("passwords should match")
             return 
         }
+        if(newPass.length < 8){
+            alert("password should be atleast 8 characters long")
+            return
+        }
+
         let dataToSend = {'password':newPass}
         let token = new URLSearchParams(location.search).get("token")
         
